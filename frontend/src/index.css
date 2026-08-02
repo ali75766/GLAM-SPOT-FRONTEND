@@ -1,0 +1,86 @@
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Sora:wght@300;400;500;600;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+  --color-bg: 255 251 247;
+  --color-surface: 255 255 255;
+  --color-fg: 31 26 43;
+  --color-muted: 117 109 132;
+  --color-line: 229 219 236;
+  --color-primary: 154 105 211;
+  --color-secondary: 238 225 250;
+  --color-accent: 255 171 126;
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
+  --color-bg: 17 16 27;
+  --color-surface: 27 25 42;
+  --color-fg: 250 247 252;
+  --color-muted: 184 176 196;
+  --color-line: 66 60 84;
+  --color-primary: 189 148 237;
+  --color-secondary: 58 47 75;
+  --color-accent: 255 183 139;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-background font-sans text-foreground antialiased;
+  background-image:
+    radial-gradient(circle at top left, rgba(238, 225, 250, 0.58), transparent 32%),
+    radial-gradient(circle at 86% 7%, rgba(255, 218, 196, 0.36), transparent 25%),
+    linear-gradient(180deg, rgba(255, 251, 247, 1), rgba(255, 253, 250, 1));
+  min-height: 100vh;
+}
+
+[data-theme="dark"] body {
+  background-image:
+    radial-gradient(circle at top left, rgba(189, 148, 237, 0.14), transparent 30%),
+    radial-gradient(circle at 85% 10%, rgba(255, 183, 139, 0.09), transparent 22%),
+    linear-gradient(180deg, rgba(17, 16, 27, 1), rgba(13, 14, 24, 1));
+}
+
+::selection {
+  background: rgba(154, 105, 211, 0.22);
+}
+
+.app-shell {
+  @apply min-h-screen;
+}
+
+.glass-card {
+  @apply border border-line/70 bg-surface/85 shadow-card backdrop-blur-xl;
+}
+
+.section-shell {
+  @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
+}
+
+.grid-sheen {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.4) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.4) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+@layer components {
+  .action-button-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-primary via-[#b47ce5] to-accent px-6 py-3.5 text-sm font-semibold text-white shadow-[0_18px_35px_rgba(154,105,211,0.24)] transition duration-300 hover:-translate-y-0.5 hover:shadow-[0_20px_40px_rgba(154,105,211,0.32)];
+  }
+
+  .action-button-secondary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-line bg-surface/90 px-5 py-3.5 text-sm font-semibold text-foreground transition duration-300 hover:-translate-y-0.5 hover:border-primary/40 hover:bg-primary/5 hover:text-primary;
+  }
+
+  .action-button-icon {
+    @apply inline-flex h-12 w-12 items-center justify-center rounded-full border border-primary/20 bg-primary/10 text-lg text-primary transition duration-300 hover:-translate-y-0.5 hover:bg-primary hover:text-white hover:shadow-[0_14px_28px_rgba(154,105,211,0.24)];
+  }
+}
